@@ -5,8 +5,6 @@ from backend import Constants
 def TGTG(latitude = None, longitude = None):
     food_dict = {}
     food_list_dict = []
-    # latitude = request.json['latitude']
-    # longitude = request.json['longitude']
 
     if not latitude:
         latitude = 52.953266
@@ -20,14 +18,16 @@ def TGTG(latitude = None, longitude = None):
     items = client.get_items(favorites_only=False, latitude=latitude, longitude=longitude, radius=50)
 
     for i in items:
-        print(i)
-        food_dict["store"] = i["item"]["store"]["store_name"]
-        food_dict["image_icon"] = i["item"]["logo_picture"]
-        food_dict["start_time"] = i["item"]["pickup_interval"]["start"]
-        food_dict["end_time"] = i["item"]["pickup_interval"]["end"]
-        food_dict["price"] = i["item"]["price_including_taxes"]["minor_units"]
-        food_dict["price"] = food_dict["price"] * 0.01
-        food_list_dict.append(food_dict)
+        try:
+            food_dict["start_time"] = i["pickup_interval"]["start"]
+            food_dict["end_time"] = i["pickup_interval"]["end"]
+            food_dict["store"] = i["store"]["store_name"]
+            food_dict["image_icon"] = i["item"]["logo_picture"]["current_url"]
+            food_dict["price"] = i["item"]["price_including_taxes"]["minor_units"]
+            food_dict["price"] = "{:.2f}".format(food_dict["price"] * 0.01)
+            food_list_dict.append(food_dict)
+        except (KeyError):
+            pass
         food_dict = {}
     return food_list_dict
 

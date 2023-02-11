@@ -86,12 +86,16 @@ def spendingPerMerchantInCategory(category):
     return json_object
 
 
-@app.route('/find')
+@app.route('/api/deals')
 def findFoodDeals():
-    backend.findTransactionCategory.findTotalCategorySpent()
+    backend.TGTG.TGTG()
+
+# @app.route('/find')
+# def findFoodDeals():
+#     backend.findTransactionCategory.findTotalCategorySpent()
 
 if __name__ == "__main__":  # Makes sure this is the main process
 	app.run( # Starts the site
 		host='127.0.0.1',  # EStablishes the host, required for repl to detect the site
 		port=5000
-	)
+    )
