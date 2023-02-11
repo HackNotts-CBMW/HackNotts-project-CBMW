@@ -15,7 +15,7 @@ def TGTG(latitude = None, longitude = None):
                         refresh_token=Constants.credentials["refresh_token"], user_id=Constants.credentials["user_id"],
                         cookie=Constants.credentials["cookie"])
 
-    items = client.get_items(favorites_only=False, latitude=latitude, longitude=longitude, radius=1000)
+    items = client.get_items(favorites_only=False, latitude=latitude, longitude=longitude, radius=50)
 
     for i in items:
         try:
