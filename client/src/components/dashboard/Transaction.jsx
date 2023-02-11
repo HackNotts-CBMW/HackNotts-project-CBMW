@@ -1,4 +1,4 @@
-import { Avatar, Grid, useStyles, ThemeProvider, Typography, Container, Slide, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, IconButton } from '@mui/material';
+import { Avatar, ThemeProvider, Slide, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, IconButton } from '@mui/material';
 import theme from '../../styles/theme';
 import '../../styles/components/balance.scss'
 import MoneyOff from '@mui/icons-material/MoneyOff';
