@@ -1,0 +1,32 @@
+.home-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:  "log-in";
+  height: 100vh;
+  align-items: center;
+  margin-right: 0;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  bottom: 15px;
+
+  @include md {
+    grid-template-columns: 65% 35%;
+    grid-template-areas:  "home-page-img-container" "log-in";
+    margin-right: 50px;
+    bottom: 0;
+  }
+}
+
+.home-page-img-container {
+  display: none;
+  grid-area: "home-page-img-container";
+
+  @include md {
+    display: inline;
+  }
+}
+
+.home-page-img {
+  width: 65%;
+}

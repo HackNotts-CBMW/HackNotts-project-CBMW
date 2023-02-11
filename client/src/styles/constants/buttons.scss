@@ -1,0 +1,30 @@
+.primary-button {
+  width: fit-content;
+  background-color: #4738c7;
+  color: white;
+  font-weight: 700;
+  border: none;
+  height: 40px;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  text-align: left;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.secondary-button {
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  text-align: left;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

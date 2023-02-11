@@ -1,3 +1,83 @@
 .log-in-form {
   background-color: red;
+  color: white;
+  grid-area: "log-in";
+}
+
+.log-in-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  color: #1d1e40;
+  width: 70%;
+  border-radius: 20px;
+  box-shadow: 4px 4px 15px -5px #0c0c1a;
+  padding: 15px 30px;
+  margin: 0 auto;
+
+  @include md {
+    width: 70%;
+    margin: 0;
+  }
+}
+
+.log-in-form-heading {
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+.log-in-form-subheading {
+  color: gray;
+  margin-top: 0;
+  text-align: left;
+}
+
+.log-in-field-conatiner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.log-in-field {
+  font-size: 16px;
+  font-style: italic;
+  padding: 5px 10px;
+  height: 40px;
+  width: 90%;
+  // margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(167, 166, 166);
+}
+
+.log-in-field-password {
+  margin-top: 20px;
+}
+
+.login-input-error {
+  color: red;
+  margin-bottom: 0;
+}
+
+.log-in-form-desc {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.log-in-button {
+  width: 150px;
+  margin-top: 15px;
+
+  &::after {
+    content:"";
+    background-image: url(../../img/arrow.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 15px; 
+    height: 15px;
+    position: absolute;
+    transform: translate(45px,1px);
+  }
 }
