@@ -1,8 +1,9 @@
 import json
 from flask import request, Flask
 import requests
+import random
 
-from backend import Constants
+import Constants
 
 headers = {
     'Authorization': f'Bearer {Constants.authJWT}',
@@ -14,7 +15,7 @@ app = Flask(__name__)
 
 @app.route('/login')
 def findAccount():
-    account_id = json.loads(request.json)['ID']
+    account_id = request.json['ID']
     response = requests.get(
         f"https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/accounts/{account_id}",
         headers=headers).text
@@ -22,3 +23,10 @@ def findAccount():
     json_response = json.dumps(json_response)
 
     return json_response
+
+
+if __name__ == "__main__":  # Makes sure this is the main process
+	app.run( # Starts the site
+		host='0.0.0.0',  # EStablishes the host, required for repl to detect the site
+		port=random.randint(2000, 9000)  # Randomly select the port the machine hosts on.
+	)
