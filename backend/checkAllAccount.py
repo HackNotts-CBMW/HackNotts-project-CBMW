@@ -1,9 +1,15 @@
 import json
 import requests
-import Constants
+from dotenv import load_dotenv
+import os
+from os.path import join, dirname
+
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv()
 
 headers = {
-    'Authorization': f'Bearer {Constants.authJWT}',
+    'Authorization': f'Bearer {os.getenv("AUTH_JWT")}',
     'Content-Type': 'application/json',
     'version': '1.0'
 }
