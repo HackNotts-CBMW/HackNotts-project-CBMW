@@ -46,6 +46,17 @@ def findTransaction():
     # json_response = json.dumps(json_response)
     return response
 
+@app.route('/api/createtransactions')
+def createTransactions():
+    account_id = request.json['ID']
+    
+    transactions=[{"amount": request.json["amount"]}, {"currency": request.json["currency"]}, {"creditDebitIndicator": request.json["creditDebitIndicator"]}, {"status": request.json["status"]}]
+    payload = json.dumps({"transactions": transactions})
+    response = requests.post(f"https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/transactions/accounts/{account_id}/create", headers=headers, data=payload).text
+    
+    json_response = json.loads(response)
+    json_response = json.dumps(json_response)
+
 @app.route('/api/spendings')
 def spendingByCategory():
     accountID = request.json['ID']
