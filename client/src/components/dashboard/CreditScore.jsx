@@ -15,13 +15,10 @@ const CreditScore = () => {
   const cy = 200;
   const iR = 50;
   const oR = 100;
-  const value = 1000;
+  const value = 800;
 
   const needle = (value, data, cx, cy, iR, oR, color) => {
-    let total = 0;
-    data.forEach((v) => {
-      total += v.value;
-    });
+    let total = 900;
 
     const ang = 180.0 * (1 - value / total);
     const length = (iR + 2 * oR) / 3;
