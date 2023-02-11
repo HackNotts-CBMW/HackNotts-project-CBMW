@@ -3,8 +3,8 @@ from flask import request, Flask
 import requests
 import random
 
-import Constants
-import backend.findTransactionCategory
+from backend import Constants
+import backend.findTransactionCategory as findTransactionCategory 
 
 headers = {
     'Authorization': f'Bearer {Constants.authJWT}',
@@ -14,7 +14,7 @@ headers = {
 
 app = Flask(__name__)
 
-@app.route('/login')
+@app.route('/api/login')
 def login():
     account_id = request.json['ID']
     response = requests.get(
@@ -25,12 +25,16 @@ def login():
 
     return json_response
 
-@app.route('/find')
+@app.route('/api/find')
 def findAccount():
-    backend.findTransactionCategory.findTotalCategorySpent()
+    return findTransactionCategory.findTotalCategorySpent()
+
+@app.route('/api/proxytest')
+def proxy():
+    return json.dumps({"hello": "hi"})
 
 if __name__ == "__main__":  # Makes sure this is the main process
 	app.run( # Starts the site
-		host='0.0.0.0',  # EStablishes the host, required for repl to detect the site
-		port=random.randint(2000, 9000)  # Randomly select the port the machine hosts on.
+		host='127.0.0.1',  # EStablishes the host, required for repl to detect the site
+		port=5000
 	)
