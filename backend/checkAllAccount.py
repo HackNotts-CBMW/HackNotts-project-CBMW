@@ -1,9 +1,6 @@
 import json
-import sys
-
 import requests
-
-from backend import Constants
+import Constants
 
 headers = {
     'Authorization': f'Bearer {Constants.authJWT}',
@@ -11,8 +8,10 @@ headers = {
     'version': '1.0'
 }
 
-account_id = sys.argv[1]
+params = {
 
-response = requests.get(f"https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/accounts/{account_id}", headers=headers).text
+}
+
+response = requests.get("https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/accounts", headers=headers, params=params).text
 json_response = json.loads(response)
 print(json_response)
