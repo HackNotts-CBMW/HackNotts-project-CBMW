@@ -58,6 +58,7 @@ def createTransactions():
     
     json_response = json.loads(response)
     json_response = json.dumps(json_response)
+    return json_response
 
 @app.route('/api/spendings')
 def spendingByCategory():
