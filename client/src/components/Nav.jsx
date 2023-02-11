@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-const Nav = () => {
+const Nav = ({ userLoggedIn }) => {
   const [navStatus, setNavStatus] = useState(false)
-  
+
   return (
     <>
       <div onClick={() => setNavStatus(!navStatus)} className='nav-mobile'>
@@ -29,16 +29,23 @@ const Nav = () => {
               </li>
             </ul>
           </div>
+          { !userLoggedIn ?
+            <div className='nav-buttons-container'>
+              <div className='nav-button-log-in'>
+                <button className='secondary-button'>Log In</button>
+              </div>
 
-          <div className='nav-buttons-container'>
-          <div className='nav-button-log-in'>
-            <button className='secondary-button'>Log In</button>
-          </div>
+              <div className='nav-button-log-up'>
+                <button className="primary-button sign-up-button">Sign Up</button>
+              </div>
+            </div> : 
+            <div className='nav-buttons-container'>
+              <div className='nav-button-log-up'>
+                <button className="secondary-button">Log Out</button>
+              </div>
+            </div>
+          }
 
-          <div className='nav-button-log-up'>
-            <button className="primary-button sign-up-button">Sign Up</button>
-          </div>
-        </div>
         </div>
       </>
   )

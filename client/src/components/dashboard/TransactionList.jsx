@@ -7,7 +7,7 @@ const TransactionList = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-      <Box sx={{
+      <Box className="dashboard-shadow"  sx={{
               backgroundColor: 'secondary.main',
               borderRadius: 4
             }}>
