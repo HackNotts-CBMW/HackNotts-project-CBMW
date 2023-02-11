@@ -1,12 +1,19 @@
 import './App.css';
 import './styles/styles.scss'
 
-import Login from './components/Login';
+import Balance from './components/dashboard/Balance';
+import { Grid } from '@mui/material';
+import TransactionList from './components/dashboard/TransactionList';
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      <Grid container>
+        <Grid item xs={6}>
+          <Balance />
+          <TransactionList />
+        </Grid>
+      </Grid>
     </div>
   );
 }
