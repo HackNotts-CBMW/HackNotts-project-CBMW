@@ -1,8 +1,6 @@
 import json
-from flask import request, Flask
+from flask import request
 import requests
-
-app = Flask(__name__)
 
 from backend import Constants
 
