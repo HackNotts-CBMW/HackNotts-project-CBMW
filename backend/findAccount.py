@@ -1,6 +1,5 @@
 import json
-import sys
-
+from flask import request, Flask
 import requests
 
 from backend import Constants
@@ -11,8 +10,15 @@ headers = {
     'version': '1.0'
 }
 
-account_id = sys.argv[1]
+app = Flask(__name__)
 
-response = requests.get(f"https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/accounts/{account_id}", headers=headers).text
-json_response = json.loads(response)
-print(json_response)
+@app.route('/login')
+def findAccount():
+    account_id = json.loads(request.json)['ID']
+    response = requests.get(
+        f"https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/accounts/{account_id}",
+        headers=headers).text
+    json_response = json.loads(response)
+    json_response = json.dumps(json_response)
+
+    return json_response
