@@ -20,10 +20,11 @@
 
 .home-page-img-container {
   display: none;
-  grid-area: "home-page-img-container";
 
   @include md {
-    display: inline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
