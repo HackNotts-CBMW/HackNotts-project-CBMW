@@ -1,5 +1,6 @@
 .dashboard {
   width: 100%;
+  grid-area: "balance-details";
   // margin-top: 30px;
   // margin-left: 50px;
 }
@@ -16,4 +17,17 @@
 .dashboard-balance-heading {
   color: white;
   text-align: left;
+}
+
+.dashboard-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 1fr;
+  grid-template-areas: "balance-details" "credit-score-container" "diagrams-section";
+  padding: 0 30px;
 }

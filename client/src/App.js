@@ -11,6 +11,8 @@ import Login from "./components/Login";
 import Balance from './components/dashboard/Balance';
 import Nav from "./components/Nav";
 import CreditScore from "./components/dashboard/CreditScore"
+import DoughNotts from "./components/dashboard/DoughNotts";
+import GridDoughNotts from "./components/dashboard/GridDoughNotts";
 
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(true)
@@ -26,19 +28,24 @@ function App() {
         <Login />
       }/>
 
-      <Route path="/transaction-list" exact element={
+      <Route path="/dashboard" exact element={
         <div className="App">
-        <Grid container spacing={4}>
-          <Grid item xs={4} >
+          <div className="dashboard-grid">
+            <Balance />
+            <CreditScore />
+            <GridDoughNotts />
+          </div>
+        {/* <Grid container spacing={1}>
+          <Grid item xs={2} >
             <Balance />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={5}>
             <CreditScore />
           </Grid>
-          <Grid item xs={4}>
-            <Balance />
+          <Grid item xs={5}>
+            <GridDoughNotts />
           </Grid>
-        </Grid>
+        </Grid> */}
       </div>
       }/>
 

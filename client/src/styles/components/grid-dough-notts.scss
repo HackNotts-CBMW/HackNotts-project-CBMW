@@ -1,0 +1,33 @@
+.grid-dough-notts {
+  width: 100%;
+  grid-area: "grid-dough-notts";
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.2fr 1fr 1fr;
+  grid-template-areas: 
+  "grid-dough-notts-title-container" 
+  "block-one" "block-two" 
+  "block-three" "block-four";
+
+  & .block-one,
+  & .block-two,
+  & .block-three,
+  & .block-four {
+    display: flex;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.grid-dough-notts-title-container {
+  grid-area: grid-dough-notts-title-container;
+  grid-column: span 2;
+  height: fit-content;
+}
+
+.grid-dough-notts,
+.grid-dough-notts-title {
+  color: white;
+}
+

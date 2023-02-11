@@ -50,33 +50,29 @@ const Balance = () => {
       <div className='dashboard'>
         <div className="dashboard-balance">
           <ThemeProvider theme={theme}>
-            <Container sx={{
-              display: 'flex',
-              justifyContent: "space-around",
-              flexDirection: "row"
-            }}>
-              <Container>
+            <div className='dashboard-container'>
+              <div>
                 <p className="dashboard-balance-heading">Your Balance:</p>
                 <Box className="dashboard-shadow" sx={{
                   backgroundColor: 'secondary.main',
                   borderRadius: 4,
                   p: 2
                 }}>
-                  <Typography variant='h2' color='text.main'>£{currBalance}</Typography>
+                  <Typography variant='h4' color='text.main'>£{currBalance}</Typography>
                 </Box>
-              </Container>
+              </div>
 
-              <Container>
+              <div>
                 <p className="dashboard-balance-heading">Your Credit Limit:</p>
                 <Box className="dashboard-shadow" sx={{
                   backgroundColor: 'secondary.main',
                   borderRadius: 4,
                   p: 2
                 }}>
-                  <Typography variant='h2' color='text.main'>£{creditLimit}</Typography>
+                  <Typography variant='h4' color='text.main'>£{creditLimit}</Typography>
                 </Box>
-              </Container>
-            </Container>
+              </div>
+            </div>
           </ThemeProvider>
         </div>
 
@@ -90,8 +86,8 @@ const Balance = () => {
                 backgroundColor: 'secondary.main',
                 borderRadius: 4
               }}>
-                <Typography variant='h2' color='text.main'>£{dailySpendingForMon}</Typography>
-              <Typography variant='subtitle1' color='action.main'>Spent £34 today</Typography>
+                <Typography variant='h4' color='text.main'>£{dailySpendingForMon}</Typography>
+              <Typography variant='p' color='action.main'>Spent £34 today</Typography>
               </Box>
             </Container>
           </ThemeProvider>

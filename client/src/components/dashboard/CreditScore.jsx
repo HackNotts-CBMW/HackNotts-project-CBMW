@@ -20,6 +20,7 @@ const CreditScore = () => {
   const needle = (value, data, cx, cy, iR, oR, color) => {
     let total = 900;
 
+
     const ang = 180.0 * (1 - value / total);
     const length = (iR + 2 * oR) / 3;
     const sin = Math.sin(-RADIAN * ang);
