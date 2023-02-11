@@ -4,6 +4,7 @@ import requests
 import random
 
 import Constants
+import backend.findTransactionCategory
 
 headers = {
     'Authorization': f'Bearer {Constants.authJWT}',
@@ -14,7 +15,7 @@ headers = {
 app = Flask(__name__)
 
 @app.route('/login')
-def findAccount():
+def login():
     account_id = request.json['ID']
     response = requests.get(
         f"https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/accounts/{account_id}",
@@ -24,6 +25,9 @@ def findAccount():
 
     return json_response
 
+@app.route('/find')
+def findAccount():
+    backend.findTransactionCategory.findTotalCategorySpent()
 
 if __name__ == "__main__":  # Makes sure this is the main process
 	app.run( # Starts the site

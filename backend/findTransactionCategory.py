@@ -18,8 +18,7 @@ params = {
 
 
 
-@app.route('/')
-def findAccount():
+def findTotalCategorySpent():
     account_id = request.json['ID']
     category = request.json['category']  # this will need to get input from the front end
     dictionary = {}
