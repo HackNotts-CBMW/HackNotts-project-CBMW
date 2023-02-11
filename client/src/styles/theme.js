@@ -18,7 +18,8 @@ var theme = createTheme({
             error: '#AD2234',
           },
           text: {
-            main: '#fff'
+            main: '#ffffff',
+            subtext: '#9e9e9e'
           }
       
         },

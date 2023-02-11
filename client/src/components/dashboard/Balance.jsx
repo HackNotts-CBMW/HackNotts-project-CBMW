@@ -13,7 +13,7 @@ const Balance = () => {
               backgroundColor: 'secondary.main',
               borderRadius: 4
             }}>
-              <Typography variant='h1' color='text.main'>$1,234</Typography>
+              <Typography variant='h2' color='text.main'>$1,234</Typography>
             <Typography variant='subtitle1' color='action.main'>Spent $34 today</Typography>
             </Box>
           </Container>
