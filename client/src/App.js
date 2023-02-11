@@ -9,11 +9,14 @@ import Balance from './components/dashboard/Balance';
 import { Grid } from '@mui/material';
 import TransactionList from './components/dashboard/TransactionList';
 
+import Nav from "./components/Nav";
+
 function App() {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   
   return (
-    <>   
+    <>  
+    <Nav /> 
     <Routes>
       <Route path="/login" exact element={
         <Login />
@@ -24,7 +27,6 @@ function App() {
         <Grid container>
           <Grid item xs={4}>
             <Balance />
-            <TransactionList />
           </Grid>
         </Grid>
       </div>
