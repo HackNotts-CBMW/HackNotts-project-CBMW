@@ -5,6 +5,7 @@ import random
 
 import Constants
 import backend.findTransactionCategory
+import backend.TGTG
 
 headers = {
     'Authorization': f'Bearer {Constants.authJWT}',
@@ -30,9 +31,10 @@ def findAccount():
     backend.findTransactionCategory.findTotalCategorySpent()
 
 
-@app.route('/find')
+@app.route('/deals')
 def findFoodDeals():
-    backend.findTransactionCategory.findTotalCategorySpent()
+    backend.TGTG.TGTG()
+
 
 if __name__ == "__main__":  # Makes sure this is the main process
 	app.run( # Starts the site
