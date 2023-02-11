@@ -21,7 +21,7 @@ params = {
 
 app = Flask(__name__)
 
-@app.route('/api/login')
+@app.route('/api/user')
 def login():
     account_id = request.json['ID']
     response = requests.get(
