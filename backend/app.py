@@ -4,6 +4,8 @@ import requests
 import random
 import os
 from os.path import join, dirname
+
+import backend.TGTG as TGTG
 import backend.findTransactionCategory as findTransactionCategory 
 from dotenv import load_dotenv
 
@@ -99,7 +101,7 @@ def spendingPerMerchantInCategory(category):
 
 @app.route('/api/deals')
 def findFoodDeals():
-    backend.TGTG.TGTG()
+    TGTG.TGTG()
 
 # @app.route('/find')
 # def findFoodDeals():
