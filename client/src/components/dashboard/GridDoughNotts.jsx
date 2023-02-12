@@ -5,7 +5,7 @@ const GridDoughNotts = () => {
     labels: ['Spent', 'Left'],
     datasets: [
       {
-        label: '# of Votes',
+        label: 'Amount of Money',
         data: [1200, 700],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -24,7 +24,7 @@ const GridDoughNotts = () => {
     labels: ['Spent', 'Left'],
     datasets: [
       {
-        label: '# of Votes',
+        label: 'Amount of Money',
         data: [800, 200],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -43,7 +43,7 @@ const GridDoughNotts = () => {
     labels: ['Spent', 'Left'],
     datasets: [
       {
-        label: '# of Votes',
+        label: 'Amount of Money',
         data: [500, 100],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -62,7 +62,7 @@ const GridDoughNotts = () => {
     labels: ['Spent', 'Left'],
     datasets: [
       {
-        label: '# of Votes',
+        label: 'Amount of Money',
         data: [600, 500],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
