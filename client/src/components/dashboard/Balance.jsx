@@ -14,7 +14,6 @@ const Balance = () => {
   const [currBalance, setCurrBalance] = useState(0)
   const [dailySpendingForMon, setDailySpendingForMon] = useState(0)
   const [totalSpending, setTotalSpending] = useState(0)
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJuYmYiOjE2Njk2ODAwMDAsImFwaV9zdWIiOiIwOWI3NDhhYWUzYTQ1N2QzZDMyOTA4NTQ1ZTQ4M2QyMzA0MzA2NTA5MGE3OTM4OWY5NWI5NGMxYmU3ZGZiZGU2MTY5NjAzMjAwMDAwMCIsInBsYyI6IjVkY2VjNzRhZTk3NzAxMGUwM2FkNjQ5NSIsImV4cCI6MTY5NjAzMjAwMCwiZGV2ZWxvcGVyX2lkIjoiMDliNzQ4YWFlM2E0NTdkM2QzMjkwODU0NWU0ODNkMjMwNDMwNjUwOTBhNzkzODlmOTViOTRjMWJlN2RmYmRlNiJ9.mVvNMyEU0CoJqDaZCurSzDoauLWvj0m3IPGBJ5a7blCgumKAhcS5VEBgvvjF6y4wOYZfCvP0a--qsZS7ua-D7pVO5ephLtFcZHXKuTKEneJ3S-HZ-4T1dDMp7uxqj1QgD4dSOOHJTFz633KubkA1FoNGOKn0-s2VNNq75l9cQRtV36Xd8FlubsPEnxHPp7wDfuvZOG42HMHZwsBi2pyCGx84VGEqiT_DudoMSE8yp93xdikIwUv1tXxZjJiQh5KmWIpvuREG73cYg8FVSwiijPgKX-V4dMTzfHAGyf4CFQ91QCYhE5OKCv73EBv_T8OouOyR5upCIIGd6twaZ2iu7g"
   
   const isToday = (someDate) => {
     const today = new Date()

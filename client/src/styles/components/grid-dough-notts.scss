@@ -9,10 +9,7 @@
   "block-one" "block-two" 
   "block-three" "block-four";
 
-  & .block-one,
-  & .block-two,
-  & .block-three,
-  & .block-four {
+  & .grid-dough-block {
     display: flex;
     width: 80%;
     display: flex;

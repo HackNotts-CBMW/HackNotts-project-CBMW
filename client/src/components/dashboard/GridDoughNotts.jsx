@@ -1,4 +1,4 @@
-import { CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import { useState } from "react";
 import { useEffect } from "react";
 import { checkUserInfo } from "../../helpers";
@@ -36,7 +36,7 @@ const GridDoughNotts = () => {
 
   return (
     <>
-      <div className="grid-dough-notts">
+      <div >
         <div className="grid-dough-notts-title-container">
           <h1 className="grid-dough-notts-title">
             Your spendings on each catergory
@@ -45,12 +45,13 @@ const GridDoughNotts = () => {
         {loading ? (
           <CircularProgress color="action" sx={{ padding: 5 }} />
         ) : (
-          <div>
+          <div className="grid-dough-notts">
             {spendings.map((values) => (
               <div>
                 <h3 className="grid-dough-notts-heading">{values.name}</h3>
 
                 <DoughNotts
+                className="grid-dough-block"
                   data={{
                     labels: ["Spent", "Left"],
                     datasets: [

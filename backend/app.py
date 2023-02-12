@@ -146,11 +146,11 @@ def findFoodDeals():
 
 @app.route('/api/promotion')
 def getPromotion():
-    promotions.promotions()
+    return promotions.promotions()
 
 @app.route('/api/fakepromotion')
 def getFakeRandomPromotion():
-    promotions.createListOfPromotions()
+    return promotions.createListOfPromotions()
 
 @app.route('/api/credit')
 def DebitOrCredit():
