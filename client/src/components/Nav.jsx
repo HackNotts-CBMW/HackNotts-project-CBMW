@@ -6,9 +6,14 @@ const Nav = ({ userLoggedIn }) => {
   return (
     <>
       <div onClick={() => setNavStatus(!navStatus)} className='nav-mobile'>
-          <span className='nav-mobile-item'></span>
-          <span className='nav-mobile-item'></span>
-          <span className='nav-mobile-item'></span>
+          <div className='nav-mobile-logo'>
+            <h1 className='nav-mobile-logo-heading'>CBMW</h1>
+          </div>
+          <div className='nav-mobile-burger'>
+            <span className='nav-mobile-item'></span>
+            <span className='nav-mobile-item'></span>
+            <span className='nav-mobile-item'></span>
+          </div>
         </div>
         
         <div className={navStatus ? `nav open` : `nav`}>

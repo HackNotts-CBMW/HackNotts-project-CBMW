@@ -84,7 +84,8 @@ const Balance = () => {
             <Container>
               <Box className="dashboard-shadow" sx={{
                 backgroundColor: 'secondary.main',
-                borderRadius: 4
+                borderRadius: 4,
+                p: 2
               }}>
                 <Typography variant='h4' color='text.main'>£{dailySpendingForMon}</Typography>
               <Typography variant='p' color='action.main'>Spent £34 today</Typography>

@@ -64,7 +64,7 @@ const CreditScore = () => {
           </Pie>
           {needle(value, data, cx, cy, iR, oR, '#4738c7')}
         </PieChart>
-        <p className="dashboard-balance-heading">Your Credit Score:</p>
+        <p className="dashboard-balance-heading">Your Credit Score: <span className='dahsboard-credit-score'>{value}</span></p>
       </div>
     </>
   )

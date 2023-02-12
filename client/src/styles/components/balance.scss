@@ -27,7 +27,24 @@
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 0.8fr 1fr 1fr;
-  grid-template-areas: "balance-details" "credit-score-container" "diagrams-section";
-  padding: 0 30px;
+  grid-template-columns: 1fr;
+  padding: 0 15px;
+
+  @include md {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "balance-details" "credit-score-container" "diagrams-section" "diagrams-section";
+    padding: 0 30px;
+  }
+
+  @include lg {
+    grid-template-rows: 1fr;
+    grid-template-columns: 0.8fr 1fr 1fr;
+    grid-template-areas: "balance-details" "credit-score-container" "diagrams-section";
+    padding: 0 30px;
+  }
+}
+
+.dahsboard-credit-score {
+  font-weight: 700;
 }

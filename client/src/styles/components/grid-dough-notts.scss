@@ -14,9 +14,17 @@
   & .block-three,
   & .block-four {
     display: flex;
-    width: 200px;
+    width: 80%;
     display: flex;
     flex-direction: column;
+  }
+
+  @include md {
+    grid-column: span 2;
+  }
+
+  @include lg {
+    grid-column: auto;
   }
 }
 
