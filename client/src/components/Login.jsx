@@ -22,13 +22,13 @@ const Login = ({ setUserLoggedIn }) => {
       .then((data) => {
         console.log(data)
         localStorage.setItem("userInfo", JSON.stringify(data))
+
+        setUserLoggedIn(true)
+        navigate("/dashboard")
       })
       .catch((err) => {
         console.log(err.message);
       })
-
-    setUserLoggedIn(true)
-    navigate("/dashboard")
   }
 
   return (
