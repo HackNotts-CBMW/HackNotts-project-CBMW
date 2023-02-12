@@ -15,6 +15,44 @@ const CreditScore = () => {
   const oR = 100;
   // const value = 400;
 
+  const tempData = [
+    {
+      "start_time": "2023-02-12T17:00:00Z", 
+      "end_time": "2023-02-12T18:00:00Z", 
+      "store": "Costa Coffee", 
+      "image_icon":"https://images.tgtg.ninja/itembulkimport/logo/89920/6859733b-250f-465d-a076-10164e3e2214.png", 
+      "price": "3.00"
+    },
+    { 
+      "start_time": "2023-02-12T15:00:00Z", 
+      "end_time": "2023-02-12T15:45:00Z", 
+      "store": "University of Nottingham - GeorgeGreen Library Cafe", 
+      "image_icon": "https://images.tgtg.ninja/store/c2e505ff-f3b8-48c9-9265-77eaba5fcb5b.png", 
+      "price":"4.00"
+    }, 
+    {
+      "start_time": "2023-02-12T16:55:00Z", 
+      "end_time": "2023-02-12T17:25:00Z", 
+      "store": "Caff\u00e8 Nero-Nottingham Angel Row", 
+      "image_icon": "https://images.tgtg.ninja/item/logo/51cb844a-d299-4146-b3a6-0683360453c6.png",
+      "price": "3.09"
+    }, 
+    {
+      "start_time": "2023-02-12T11:00:00Z", 
+      "end_time": "2023-02-12T11:30:00Z", 
+      "store": "Crowne Plaza Nottingham", 
+      "image_icon": "https://images.tgtg.ninja/store/feea9013-0195-4af9-bd4a-b6bfd29dc61e.png", 
+      "price": "4.00"
+    },
+    {
+      "start_time": "2023-02-12T12:00:00Z", 
+      "end_time": "2023-02-12T18:00:00Z", 
+      "store": "Oriental Mart - Nottingham",
+      "image_icon": "https://images.tgtg.ninja/store/c35bed08-cbe0-412a-bac6-16436aeb19b9.jpg", 
+      "price": "2.09"
+    }
+  ]
+
   useEffect(() => {
     if (value > 739) {
       setAdvice("You're doing a great job! Keep up the good work")
@@ -99,6 +137,30 @@ const CreditScore = () => {
             </Typography>
           </Box>
         </ThemeProvider>
+
+        <p className="dashboard-balance-heading dashboard-deals-heading">Save your money by buying these deals:</p>
+          <ThemeProvider theme={theme}>
+            {tempData.map((data) => (
+              <Box className="dashboard-shadow credit-score-box dashboard-deal-box" sx={{
+                backgroundColor: 'secondary.main',
+                borderRadius: 4,
+                p: 2,
+                display: "flex",
+                flexDirection: "column"
+              }}>
+                <div className='dashboard-deals-img-container'>
+                  <img className='dashboard-deals-img' src={data.image_icon} />
+                </div>
+                <Typography variant='h5' color='text.main'>
+                  {data.store}
+                </Typography>
+                <Typography variant='p' color='text.main'>
+                  Price: £{data.price}<br/>
+                  Duration of Deal: {Date(data.start_time)} - {Date(data.end_time)}
+                </Typography>
+              </Box>
+            ))}
+          </ThemeProvider>
       </div>
     </>
   )
