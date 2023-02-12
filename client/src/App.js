@@ -14,6 +14,7 @@ import CreditScore from "./components/dashboard/CreditScore"
 import DoughNotts from "./components/dashboard/DoughNotts";
 import GridDoughNotts from "./components/dashboard/GridDoughNotts";
 import SignUp from "./components/SignUp";
+import AllTransactions from "./components/dashboard/AllTransactions";
 
 import { checkUserInfo } from "../src/helpers"
 
@@ -43,6 +44,10 @@ function App() {
         <SignUp 
         setUserLoggedIn={setUserLoggedIn}
         />
+      }/>
+
+      <Route path="/transactions" exact element={
+        <AllTransactions />
       }/>
 
       <Route path="/dashboard" exact element={
