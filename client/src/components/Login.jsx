@@ -1,7 +1,7 @@
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
-import homePagePic from "../img/login-pic.png"
+import homePagePic from "../img/login-pic-2.png"
 
 const Login = () => {
 
