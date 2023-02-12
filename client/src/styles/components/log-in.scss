@@ -68,6 +68,7 @@
 .log-in-button {
   width: 150px;
   margin-top: 15px;
+  margin-bottom: 15px;
 
   &::after {
     content:"";
@@ -80,4 +81,8 @@
     position: absolute;
     transform: translate(45px,1px);
   }
+}
+
+.sign-up-field {
+  margin-top: 20px;
 }
