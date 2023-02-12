@@ -1,11 +1,11 @@
 import json
 import random
 
+promotion_cat = {"Shopping": ["Amazon", "Apple", "Boots", "Sports Direct"],
+                 "Fun": ["Amazon", "Disney Plus", "Tidal", "Booking.com"]}
+discount_list = [5, 10, 12, 15, 20]
 
 def promotions(category=None, brand=None, discount=None):
-    promotion_cat = {"Shopping": ["Amazon", "Apple", "Boots", "Sports Direct"],
-                     "Fun": ["Amazon", "Disney Plus", "Tidal", "Booking.com"]}
-    discount_list = [5, 10, 12, 15, 20]
 
     if not brand:
         if not category:
@@ -34,3 +34,20 @@ def promotions(category=None, brand=None, discount=None):
             discount_chosen = discount
 
         return json.dumps({company: discount_chosen})
+
+def createListOfPromotions():
+
+    promo_shopping = {}
+    promo_fun = {}
+
+    for i in promotion_cat["Shopping"]:
+        promo_shopping[i] = random.choice(discount_list)
+
+    for i in promotion_cat["Fun"]:
+        promo_fun[i] = random.choice(discount_list)
+
+    return json.dumps(promo_shopping), json.dumps(promo_fun)
+
+if __name__ == '__main__':
+    print(createListOfPromotions())
+    
