@@ -51,13 +51,14 @@ function App() {
       }/>
 
       <Route path="/dashboard" exact element={
-        <div className="App">
-          <div className="dashboard-grid">
-            <Balance />
-            <CreditScore />
-            <GridDoughNotts />
-          </div>
-      </div>
+        userLoggedIn ? (
+          <div className="App">
+            <div className="dashboard-grid">
+              <Balance />
+              <CreditScore />
+              <GridDoughNotts />
+            </div>
+        </div> ) : <Navigate replace to="/login" />
       }/>
 
       <Route path="/" exact element={<Navigate replace to="/login" />} />

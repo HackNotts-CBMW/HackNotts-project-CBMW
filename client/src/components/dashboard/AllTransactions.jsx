@@ -1,4 +1,4 @@
-import { Box, Button, Container, List, ThemeProvider, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Container, List, ThemeProvider, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useState } from "react";
 import { getLoggedInUser } from "../../helpers";
@@ -7,6 +7,8 @@ import Transaction from "./Transaction";
 
 const AllTransactions = () => {
   const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
 
 
   useEffect(() => {
@@ -20,6 +22,7 @@ const AllTransactions = () => {
           return Date.parse(y.timestamp) - Date.parse(x.timestamp);
         });
         setTransactions(allTransactions);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err.message);
@@ -28,7 +31,7 @@ const AllTransactions = () => {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
         <Container>
           <Box
             className="dashboard-shadow"
@@ -37,11 +40,14 @@ const AllTransactions = () => {
               borderRadius: 4,
             }}
           >
+            { loading ? (
+            <CircularProgress color="action" sx={{ padding: 5, alignSelf:"center", justifySelf:"center" }}/>
+          ) :
             <List dense={false}>
               {transactions.map((object, i) => (
                 <Transaction transaction={object} />
-              ))}
-            </List>
+              ))} 
+            </List> }
           </Box>
         </Container>
       </ThemeProvider>

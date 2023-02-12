@@ -8,7 +8,7 @@ const Nav = ({ userLoggedIn, setUserLoggedIn }) => {
   return (
     <>
       <div onClick={() => setNavStatus(!navStatus)} className='nav-mobile'>
-          <div className='nav-mobile-logo'>
+          <div className='nav-mobile-logo' onClick={() => userLoggedIn ? navigate("/dashboard") : navigate("/login")}>
             <h1 className='nav-mobile-logo-heading'>CBMW</h1>
           </div>
           <div className='nav-mobile-burger'>
@@ -19,7 +19,7 @@ const Nav = ({ userLoggedIn, setUserLoggedIn }) => {
         </div>
         
         <div className={navStatus ? `nav open` : `nav`}>
-          <div className='nav-logo'>
+          <div className='nav-logo' onClick={() => userLoggedIn ? navigate("/dashboard") : navigate("/login")}>
             <h1 className='nav-logo-heading'>CBMW</h1>
           </div>
 
