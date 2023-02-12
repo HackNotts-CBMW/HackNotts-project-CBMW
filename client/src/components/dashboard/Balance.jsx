@@ -88,7 +88,7 @@ const Balance = () => {
           </ThemeProvider>
         </div>
 
-        {totalSpending > dailySpendingForMon ?
+        {totalSpending >= dailySpendingForMon ?
           <div className='dashboard-warning'>
             <div className='dashboard-warning-img-container'>
               <Warning />

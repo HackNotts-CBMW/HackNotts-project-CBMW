@@ -77,3 +77,24 @@
   padding-left: 20px;
   width: 90%;
 }
+
+.dashboard-deals-heading {
+  text-align: left;
+  width: 85%;
+}
+
+.dashboard-deal-box {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.dashboard-deals-img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-deals-img {
+  width: 100%;
+  max-width: 150px;
+  margin-bottom: 10px;
+}
