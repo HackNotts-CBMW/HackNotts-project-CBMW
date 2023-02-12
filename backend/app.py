@@ -100,9 +100,9 @@ def createTransactions():
     json_response = json.dumps(json_response)
     return json_response
 
-@app.route('/api/spendings', methods=["GET"])
-def spendingByCategory():
-    accountID = request.json['ID']
+@app.route('/api/spendings/<accountID>', methods=["GET"])
+def spendingByCategory(accountID):
+    # accountID = request.json['ID']
     dictionary = {}
 
     response = requests.get(f"https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/transactions/accounts/{accountID}/transactions", headers=headers, params=params).text
@@ -117,9 +117,9 @@ def spendingByCategory():
     json_response = json.dumps(dictionary)
     return json_response
 
-@app.route('/api/spendings/<category>', methods=["GET"])
-def spendingPerMerchantInCategory(category):
-    account_id = request.json['ID']
+@app.route('/api/spendings/<category>/<account_id>', methods=["GET"])
+def spendingPerMerchantInCategory(category, account_id):
+    # account_id = request.json['ID']
     # category = request.json['category']  # this will need to get input from the front end
     dictionary = {}
 
