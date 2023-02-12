@@ -45,7 +45,7 @@ const Login = () => {
 
                 <div className='log-in-field-conatiner'>
                   {/* <label htmlFor="password" className='log-in-field-label'>Password</label> */}
-                  <Field placeholder="Password" className="log-in-field log-in-field-password" type="text" name="password"/>
+                  <Field placeholder="Password" className="log-in-field log-in-field-password" type="password" name="password"/>
                   {props.errors.password &&  props.touched.password && <p className="login-input-error" name="password">{props.errors.password}</p>}
                 </div>
 
