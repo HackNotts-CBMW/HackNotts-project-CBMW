@@ -175,5 +175,5 @@ def DebitOrCredit():
 db.initialize()
 app.run( # Starts the site
     host='127.0.0.1',  # EStablishes the host, required for repl to detect the site
-    port=5000
+    port=8000
 )
