@@ -6,7 +6,8 @@ import os
 from os.path import join, dirname
 
 import backend.TGTG as TGTG
-import backend.findTransactionCategory as findTransactionCategory 
+import backend.findTransactionCategory as findTransactionCategory
+import backend.promotions as promotions
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), '.env')
@@ -103,6 +104,11 @@ def spendingPerMerchantInCategory(category):
 @app.route('/api/deals')
 def findFoodDeals():
     TGTG.TGTG()
+
+@app.route('/api/promotion')
+def getPromotion():
+    promotions.promotions()
+
 
 # @app.route('/find')
 # def findFoodDeals():
