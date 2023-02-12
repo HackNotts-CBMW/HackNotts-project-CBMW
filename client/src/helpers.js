@@ -3,3 +3,7 @@ export const checkUserInfo = () => {
 
   return JSON.parse(userInfo)
 }
+
+export const getLoggedInUser = () => {
+  return checkUserInfo()['accountId']
+}
