@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     // Returns user info
-    console.log(checkUserInfo())
+    // console.log(checkUserInfo())
   }, []);
   
   return (

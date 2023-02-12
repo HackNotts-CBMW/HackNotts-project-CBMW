@@ -8,6 +8,7 @@ import { checkUserInfo } from '../../helpers';
 
 const CreditScore = () => {
   const [advice, setAdvice] = useState("")
+  const [dealData, setdealData] = useState([])
 
   const cx = 150;
   const cy = 200;
@@ -15,43 +16,57 @@ const CreditScore = () => {
   const oR = 100;
   // const value = 400;
 
-  const tempData = [
-    {
-      "start_time": "2023-02-12T17:00:00Z", 
-      "end_time": "2023-02-12T18:00:00Z", 
-      "store": "Costa Coffee", 
-      "image_icon":"https://images.tgtg.ninja/itembulkimport/logo/89920/6859733b-250f-465d-a076-10164e3e2214.png", 
-      "price": "3.00"
-    },
-    { 
-      "start_time": "2023-02-12T15:00:00Z", 
-      "end_time": "2023-02-12T15:45:00Z", 
-      "store": "University of Nottingham - GeorgeGreen Library Cafe", 
-      "image_icon": "https://images.tgtg.ninja/store/c2e505ff-f3b8-48c9-9265-77eaba5fcb5b.png", 
-      "price":"4.00"
-    }, 
-    {
-      "start_time": "2023-02-12T16:55:00Z", 
-      "end_time": "2023-02-12T17:25:00Z", 
-      "store": "Caff\u00e8 Nero-Nottingham Angel Row", 
-      "image_icon": "https://images.tgtg.ninja/item/logo/51cb844a-d299-4146-b3a6-0683360453c6.png",
-      "price": "3.09"
-    }, 
-    {
-      "start_time": "2023-02-12T11:00:00Z", 
-      "end_time": "2023-02-12T11:30:00Z", 
-      "store": "Crowne Plaza Nottingham", 
-      "image_icon": "https://images.tgtg.ninja/store/feea9013-0195-4af9-bd4a-b6bfd29dc61e.png", 
-      "price": "4.00"
-    },
-    {
-      "start_time": "2023-02-12T12:00:00Z", 
-      "end_time": "2023-02-12T18:00:00Z", 
-      "store": "Oriental Mart - Nottingham",
-      "image_icon": "https://images.tgtg.ninja/store/c35bed08-cbe0-412a-bac6-16436aeb19b9.jpg", 
-      "price": "2.09"
-    }
-  ]
+  // const tempData = [
+  //   {
+  //     "start_time": "2023-02-12T17:00:00Z", 
+  //     "end_time": "2023-02-12T18:00:00Z", 
+  //     "store": "Costa Coffee", 
+  //     "image_icon":"https://images.tgtg.ninja/itembulkimport/logo/89920/6859733b-250f-465d-a076-10164e3e2214.png", 
+  //     "price": "3.00"
+  //   },
+  //   { 
+  //     "start_time": "2023-02-12T15:00:00Z", 
+  //     "end_time": "2023-02-12T15:45:00Z", 
+  //     "store": "University of Nottingham - GeorgeGreen Library Cafe", 
+  //     "image_icon": "https://images.tgtg.ninja/store/c2e505ff-f3b8-48c9-9265-77eaba5fcb5b.png", 
+  //     "price":"4.00"
+  //   }, 
+  //   {
+  //     "start_time": "2023-02-12T16:55:00Z", 
+  //     "end_time": "2023-02-12T17:25:00Z", 
+  //     "store": "Caff\u00e8 Nero-Nottingham Angel Row", 
+  //     "image_icon": "https://images.tgtg.ninja/item/logo/51cb844a-d299-4146-b3a6-0683360453c6.png",
+  //     "price": "3.09"
+  //   }, 
+  //   {
+  //     "start_time": "2023-02-12T11:00:00Z", 
+  //     "end_time": "2023-02-12T11:30:00Z", 
+  //     "store": "Crowne Plaza Nottingham", 
+  //     "image_icon": "https://images.tgtg.ninja/store/feea9013-0195-4af9-bd4a-b6bfd29dc61e.png", 
+  //     "price": "4.00"
+  //   },
+  //   {
+  //     "start_time": "2023-02-12T12:00:00Z", 
+  //     "end_time": "2023-02-12T18:00:00Z", 
+  //     "store": "Oriental Mart - Nottingham",
+  //     "image_icon": "https://images.tgtg.ninja/store/c35bed08-cbe0-412a-bac6-16436aeb19b9.jpg", 
+  //     "price": "2.09"
+  //   }
+  // ]
+
+  useEffect(() => {
+    fetch("/api/deals")
+      .then(async (response) => await response.json())
+      .then((data) => {
+        console.log(data)
+        setdealData(data)
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+    // Returns user info
+    // console.log(checkUserInfo())
+  }, [])
 
   useEffect(() => {
     if (value > 739) {
@@ -140,7 +155,7 @@ const CreditScore = () => {
 
         <p className="dashboard-balance-heading dashboard-deals-heading">Save your money by buying these deals:</p>
           <ThemeProvider theme={theme}>
-            {tempData.map((data) => (
+            {dealData.map((data) => (
               <Box className="dashboard-shadow credit-score-box dashboard-deal-box" sx={{
                 backgroundColor: 'secondary.main',
                 borderRadius: 4,

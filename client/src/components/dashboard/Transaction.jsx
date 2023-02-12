@@ -1,5 +1,5 @@
 import { Avatar, ThemeProvider,
-   Slide, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, IconButton } from '@mui/material';
+   Slide, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, IconButton, Typography } from '@mui/material';
 import theme from '../../styles/theme';
 
 import MoneyOff from '@mui/icons-material/MoneyOff';
@@ -10,6 +10,12 @@ import { red, green } from "@mui/material/colors";
 
 const Transaction = (transaction) => {
   transaction = transaction.transaction
+
+
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" }
+    return new Date(dateString).toLocaleDateString(undefined, options)
+  }
 
   return (
     <>
@@ -35,15 +41,10 @@ const Transaction = (transaction) => {
             </ListItemAvatar>
             <ListItemText
               primary={transaction.merchant.name}
-              secondary={`${transaction.amount} - ${transaction.timestamp}`}
+              secondary={`${formatDate(Date.parse(transaction.timestamp))}`}
             />
             <ListItemSecondaryAction>
-              <IconButton
-                edge="end"
-                aria-label="delete"
-              >
-                <Delete />
-              </IconButton>
+              <Typography variant='h7' color='text.main'>{transaction.amount} £</Typography>
             </ListItemSecondaryAction>
           </ListItem>
         </Slide>

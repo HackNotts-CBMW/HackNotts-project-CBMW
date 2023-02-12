@@ -20,7 +20,7 @@ const Login = ({ setUserLoggedIn }) => {
     })
       .then(async (response) => await response.json())
       .then((data) => {
-        console.log(data.Accounts[0])
+        // console.log(data.Accounts[0])
         localStorage.setItem("userInfo", JSON.stringify(data.Accounts[0]))
 
         setUserLoggedIn(true)

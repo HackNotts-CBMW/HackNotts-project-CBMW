@@ -1,110 +1,75 @@
-import DoughNotts from "./DoughNotts"
+import { useState } from "react";
+import { useEffect } from "react";
+import { checkUserInfo } from "../../helpers";
+import DoughNotts from "./DoughNotts";
 
 const GridDoughNotts = () => {
-  const blockOneData = {
-    labels: ['Spent', 'Left'],
-    datasets: [
-      {
-        label: 'Amount of Money',
-        data: [1200, 700],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
+  const [spendings, setSpendings] = useState([]);
 
-  const blockTwoData = {
-    labels: ['Spent', 'Left'],
-    datasets: [
-      {
-        label: 'Amount of Money',
-        data: [800, 200],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
+  useEffect(() => {
+    const user = checkUserInfo();
+    const uid = user.accountId;
 
-  const blockThreeData = {
-    labels: ['Spent', 'Left'],
-    datasets: [
-      {
-        label: 'Amount of Money',
-        data: [500, 100],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
+    fetch("/api/spendings/" + uid)
+      .then(async (response) => await response.json())
+      .then((data) => {
+        const dailybudget = user.balance/Object.keys(data).length;
+        var categories = [];
+        for(var key in data) {
+          const val = data[key]
+          const catVal = Math.max(val, -1 * val);
+          categories.push(
+            {
+              name: key,
+              spent: catVal,
+              left: dailybudget - catVal,
+            },
+          );
+        }
+        setSpendings(categories);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
 
-  const blockFourData = {
-    labels: ['Spent', 'Left'],
-    datasets: [
-      {
-        label: 'Amount of Money',
-        data: [600, 500],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  return(
+  return (
     <>
       <div className="grid-dough-notts">
         <div className="grid-dough-notts-title-container">
-          <h1 className="grid-dough-notts-title">Your spendings on each catergory</h1> 
+          <h1 className="grid-dough-notts-title">
+            Your spendings on each catergory
+          </h1>
         </div>
-        <div className="block-one">
-          <h3 className="grid-dough-notts-heading">Shopping</h3>
-          <DoughNotts data={blockOneData} />
-        </div>
-
-        <div className="block-two">
-          <h3 className="grid-dough-notts-heading">Food</h3>
-          <DoughNotts data={blockTwoData} />
-        </div>
-
-        <div className="block-three">
-          <h3 className="grid-dough-notts-heading">Rent & Bill</h3>
-          <DoughNotts data={blockThreeData} />
-        </div>
-
-        <div className="block-four">
-          <h3 className="grid-dough-notts-heading">Fun</h3>
-          <DoughNotts data={blockFourData} />
-        </div>
+        {spendings.map((values) => (
+          <div>
+            <h3 className="grid-dough-notts-heading">{values.name}</h3>
+            
+            <DoughNotts
+              data={{
+                labels: ["Spent", "Left"],
+                datasets: [
+                  {
+                    label: "Amount of Money",
+                    data: [values.spent, values.left],
+                    backgroundColor: [
+                      "rgba(255, 99, 132, 0.2)",
+                      "rgba(54, 162, 235, 0.2)",
+                    ],
+                    borderColor: [
+                      "rgba(255, 99, 132, 1)",
+                      "rgba(54, 162, 235, 1)",
+                    ],
+                    borderWidth: 1,
+                  },
+                ],
+              }}
+            />
+          </div>
+        ))}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default GridDoughNotts 
+export default GridDoughNotts;

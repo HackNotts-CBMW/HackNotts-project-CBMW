@@ -46,7 +46,7 @@ const Balance = () => {
         console.log(err.message);
       });
     // Returns user info
-    console.log(checkUserInfo())
+    // console.log(checkUserInfo())
   }, [])
 
   useEffect(() => {
