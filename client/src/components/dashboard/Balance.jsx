@@ -22,7 +22,6 @@ const Balance = () => {
     setTotalSpending(59)
     // Returns user info
     console.log(checkUserInfo())
-    getAccountDetails()
   }, [])
 
   useEffect(() => {
@@ -38,19 +37,6 @@ const Balance = () => {
   const findBalance = () => {
     if (currBalance > creditLimit) return creditLimit
     if (creditLimit > currBalance) return currBalance
-  }
-
-  const getAccountDetails = async () => {
-    const response = await fetch(
-      "https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/accounts/34560461", {
-        headers: {
-          "Authorization": `Bearer ${token}`,
-          "Version": "1.0"
-        }
-      }
-    ).then(() =>{ 
-      console.log(response)
-    })
   }
 
   return (
