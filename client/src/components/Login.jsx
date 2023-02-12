@@ -6,8 +6,8 @@ import homePagePic from "../img/login-pic.png"
 const Login = () => {
 
 
-  const handleFormSubmission = () => {
-
+  const handleFormSubmission = (event) => {
+    console.log(event.email)
   }
 
   return (
