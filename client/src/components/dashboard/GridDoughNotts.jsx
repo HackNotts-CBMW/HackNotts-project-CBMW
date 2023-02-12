@@ -23,7 +23,7 @@ const GridDoughNotts = () => {
           categories.push({
             name: key,
             spent: catVal,
-            left: dailybudget - catVal,
+            left: Math.abs(dailybudget - catVal),
           });
         }
         setSpendings(categories);

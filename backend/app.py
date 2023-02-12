@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 from flask_bcrypt import Bcrypt
 import backend.models as db
 
-dotenv_path = join(dirname(__file__), '.env')
+dotenv_path = join(dirname(__file__), '..env')
 load_dotenv()
 
 headers = {

@@ -17,3 +17,5 @@ urllib3==1.26.14
 Werkzeug==2.2.2
 zipp==3.13.0
 flask-bcrypt==1.0.1
+python-dotenv==0.21.1
+flask_bcrypt==1.0.1

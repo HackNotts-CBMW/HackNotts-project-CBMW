@@ -5,7 +5,7 @@ import os
 from os.path import join, dirname
 
 
-dotenv_path = join(dirname(__file__), '.env')
+dotenv_path = join(dirname(__file__), '..env')
 load_dotenv()
 
 headers = {
