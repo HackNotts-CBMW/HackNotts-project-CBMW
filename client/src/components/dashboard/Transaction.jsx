@@ -4,17 +4,18 @@ import theme from '../../styles/theme';
 
 import MoneyOff from '@mui/icons-material/MoneyOff';
 import Delete from '@mui/icons-material/Delete';
+import { red, green } from "@mui/material/colors";
+
 
 
 const Transaction = (transaction) => {
-  
+  transaction = transaction.transaction
 
-  
   return (
     <>
       <ThemeProvider theme={theme}>
       <Slide
-          key={transaction.id}
+          key={transaction.transactionUUID}
           direction="down"
           in
           mountOnEnter
@@ -22,13 +23,19 @@ const Transaction = (transaction) => {
         >
           <ListItem>
             <ListItemAvatar>
-              <Avatar>
+              <Avatar sx = { transaction.amount <= 0 ? {
+                color: "#fff",
+                backgroundColor: green[500]
+              } : {
+                color: theme.palette.getContrastText(red[500]),
+                backgroundColor: red[500]
+              }}>
                 <MoneyOff />
               </Avatar>
             </ListItemAvatar>
             <ListItemText
-              primary={transaction.category}
-              secondary={`${transaction.amount} - ${transaction.date}`}
+              primary={transaction.merchant.name}
+              secondary={`${transaction.amount} - ${transaction.timestamp}`}
             />
             <ListItemSecondaryAction>
               <IconButton
