@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 
-const Nav = ({ userLoggedIn }) => {
+const Nav = ({ userLoggedIn, setUserLoggedIn }) => {
   const [navStatus, setNavStatus] = useState(false)
+    const navigate = useNavigate()
 
   return (
     <>
@@ -37,16 +39,19 @@ const Nav = ({ userLoggedIn }) => {
           { !userLoggedIn ?
             <div className='nav-buttons-container'>
               <div className='nav-button-log-in'>
-                <button className='secondary-button'>Log In</button>
+                <button className='secondary-button' onClick={() => navigate("/login")}>Log In</button>
               </div>
 
               <div className='nav-button-log-up'>
-                <button className="primary-button sign-up-button">Sign Up</button>
+                <button className="primary-button sign-up-button" onClick={() => navigate("/sign-up")}>Sign Up</button>
               </div>
             </div> : 
             <div className='nav-buttons-container'>
               <div className='nav-button-log-up'>
-                <button className="secondary-button">Log Out</button>
+                <button className="secondary-button" onClick={() => {
+                  setUserLoggedIn(false)
+                  navigate("/login")
+                }}>Log Out</button>
               </div>
             </div>
           }

@@ -1,10 +1,11 @@
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom'
 
 import homePagePic from "../img/login-pic-2.png"
 
-const Login = () => {
-
+const Login = ({ setUserLoggedIn }) => {
+    const navigate = useNavigate()
 
   const handleFormSubmission = (event) => {
     fetch('/api/login', {
@@ -20,11 +21,14 @@ const Login = () => {
       .then(async (response) => await response.json())
       .then((data) => {
         console.log(data)
-        // TODO: save to session to use in API calls
+        localStorage.setItem("userInfo", JSON.stringify(data))
       })
       .catch((err) => {
         console.log(err.message);
       })
+
+    setUserLoggedIn(true)
+    navigate("/dashboard")
   }
 
   return (

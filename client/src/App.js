@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes, Navigate } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 
@@ -15,22 +15,34 @@ import DoughNotts from "./components/dashboard/DoughNotts";
 import GridDoughNotts from "./components/dashboard/GridDoughNotts";
 import SignUp from "./components/SignUp";
 
+import { checkUserInfo } from "../src/helpers"
+
 function App() {
-  const [userLoggedIn, setUserLoggedIn] = useState(true)
+  const [userLoggedIn, setUserLoggedIn] = useState(false)
   // const navigate = useNavigate()
+
+  useEffect(() => {
+    // Returns user info
+    console.log(checkUserInfo())
+  }, []);
   
   return (
     <>  
     <Nav 
       userLoggedIn={userLoggedIn}
+      setUserLoggedIn={setUserLoggedIn}
     /> 
     <Routes>
       <Route path="/login" exact element={
-        <Login />
+        <Login 
+        setUserLoggedIn={setUserLoggedIn}
+        />
       }/>
 
       <Route path="/sign-up" exact element={
-        <SignUp />
+        <SignUp 
+        setUserLoggedIn={setUserLoggedIn}
+        />
       }/>
 
       <Route path="/dashboard" exact element={
@@ -40,17 +52,6 @@ function App() {
             <CreditScore />
             <GridDoughNotts />
           </div>
-        {/* <Grid container spacing={1}>
-          <Grid item xs={2} >
-            <Balance />
-          </Grid>
-          <Grid item xs={5}>
-            <CreditScore />
-          </Grid>
-          <Grid item xs={5}>
-            <GridDoughNotts />
-          </Grid>
-        </Grid> */}
       </div>
       }/>
 

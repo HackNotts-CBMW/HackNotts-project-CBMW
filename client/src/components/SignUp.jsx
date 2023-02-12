@@ -3,9 +3,9 @@ import * as Yup from 'yup';
 
 import homePagePic from "../img/login-pic-2.png"
 
-const SignUp = () => {
+const SignUp = ({ setUserLoggedIn }) => {
   const handleFormSubmission = () => {
-
+    setUserLoggedIn(true)
   }
 
   return (

@@ -7,17 +7,22 @@ import TransactionList from './TransactionList';
 
 import { ReactComponent as Warning }  from '../../img/warning.svg'
 
+import { checkUserInfo } from '../../helpers'
+
 const Balance = () => {
   const [creditLimit, setCreditLimit] = useState(0)
   const [currBalance, setCurrBalance] = useState(0)
   const [dailySpendingForMon, setDailySpendingForMon] = useState(0)
   const [totalSpending, setTotalSpending] = useState(0)
   const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJuYmYiOjE2Njk2ODAwMDAsImFwaV9zdWIiOiIwOWI3NDhhYWUzYTQ1N2QzZDMyOTA4NTQ1ZTQ4M2QyMzA0MzA2NTA5MGE3OTM4OWY5NWI5NGMxYmU3ZGZiZGU2MTY5NjAzMjAwMDAwMCIsInBsYyI6IjVkY2VjNzRhZTk3NzAxMGUwM2FkNjQ5NSIsImV4cCI6MTY5NjAzMjAwMCwiZGV2ZWxvcGVyX2lkIjoiMDliNzQ4YWFlM2E0NTdkM2QzMjkwODU0NWU0ODNkMjMwNDMwNjUwOTBhNzkzODlmOTViOTRjMWJlN2RmYmRlNiJ9.mVvNMyEU0CoJqDaZCurSzDoauLWvj0m3IPGBJ5a7blCgumKAhcS5VEBgvvjF6y4wOYZfCvP0a--qsZS7ua-D7pVO5ephLtFcZHXKuTKEneJ3S-HZ-4T1dDMp7uxqj1QgD4dSOOHJTFz633KubkA1FoNGOKn0-s2VNNq75l9cQRtV36Xd8FlubsPEnxHPp7wDfuvZOG42HMHZwsBi2pyCGx84VGEqiT_DudoMSE8yp93xdikIwUv1tXxZjJiQh5KmWIpvuREG73cYg8FVSwiijPgKX-V4dMTzfHAGyf4CFQ91QCYhE5OKCv73EBv_T8OouOyR5upCIIGd6twaZ2iu7g"
-
+  
   useEffect(() => {
     setCreditLimit(905)
     setCurrBalance(1300)
     setTotalSpending(59)
+    // Returns user info
+    console.log(checkUserInfo())
+    getAccountDetails()
   }, [])
 
   useEffect(() => {
@@ -32,22 +37,21 @@ const Balance = () => {
 
   const findBalance = () => {
     if (currBalance > creditLimit) return creditLimit
-    if (creditLimit > currBalance) return creditLimit
+    if (creditLimit > currBalance) return currBalance
   }
 
-  // const getAccountDetails = async () => {
-  //   const response = await axios.get(
-  //     "https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/accounts/34560461", { 
-  //         headers: {
-  //         "Authorization" : `Bearer ${token}`,
-  //         "Content-Type": "application/json",
-  //         "version": "1.0"
-  //       }
-  //     }
-  //   ).then(() =>{ 
-  //     console.log(response)
-  //   })
-  // }
+  const getAccountDetails = async () => {
+    const response = await fetch(
+      "https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/accounts/34560461", {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Version": "1.0"
+        }
+      }
+    ).then(() =>{ 
+      console.log(response)
+    })
+  }
 
   return (
     <>
