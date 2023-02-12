@@ -14,6 +14,7 @@ import CreditScore from "./components/dashboard/CreditScore"
 import DoughNotts from "./components/dashboard/DoughNotts";
 import GridDoughNotts from "./components/dashboard/GridDoughNotts";
 import SignUp from "./components/SignUp";
+import AllTransactions from "./components/dashboard/AllTransactions";
 
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(true)
@@ -31,6 +32,10 @@ function App() {
 
       <Route path="/sign-up" exact element={
         <SignUp />
+      }/>
+
+      <Route path="/transactions" exact element={
+        <AllTransactions />
       }/>
 
       <Route path="/dashboard" exact element={
