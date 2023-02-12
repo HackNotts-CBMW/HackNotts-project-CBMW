@@ -7,7 +7,24 @@ const Login = () => {
 
 
   const handleFormSubmission = (event) => {
-    console.log(event.email)
+    fetch('/api/login', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "email": event.email,
+        "password": event.password
+      })
+    })
+      .then(async (response) => await response.json())
+      .then((data) => {
+        console.log(data)
+        // TODO: save to session to use in API calls
+      })
+      .catch((err) => {
+        console.log(err.message);
+      })
   }
 
   return (
@@ -54,7 +71,7 @@ const Login = () => {
                 <button
                   className="primary-button log-in-button" 
                   type="submit" 
-                  disabled={props.isValid === false}>Login...
+                  disabled={props.isValid === false}>Login
                 </button>
               </Form>
             )}

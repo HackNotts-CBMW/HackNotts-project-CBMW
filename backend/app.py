@@ -26,19 +26,18 @@ params = {
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 
-@app.route('/api/login')
+@app.route('/api/login', methods=["POST"])
 def login():
+    print(request.json)
     email = request.json['email']
     password = request.json['password']
     user = db.retrieveUser(email)
-    print(type(user))
-    print(user)
     if(bcrypt.check_password_hash(user[1], password)):
         return userData(user[2])
     else:
         return Response(json.dumps({"error": "Invalid credentials"}), status=401)
 
-@app.route('/api/register')
+@app.route('/api/register', methods=["POST"])
 def register():
     email = request.json['email']
     password = bcrypt.generate_password_hash(request.json['password'])
@@ -63,7 +62,7 @@ def generateUser(numTransactions):
 
     return json.loads(response)['Accounts'][0]['accountId']
 
-@app.route('/api/user')
+@app.route('/api/user', methods=["GET"])
 def getUser(account_id):
     account_id = request.json['ID']
     return userData(account_id)
@@ -77,11 +76,11 @@ def userData(account_id):
 
     return json_response
 
-@app.route('/api/find')
+@app.route('/api/find', methods=["GET"])
 def findAccount():
     return findTransactionCategory.findTotalCategorySpent()
 
-@app.route('/api/transactions/<accountID>')
+@app.route('/api/transactions/<accountID>', methods=["GET"])
 def findTransaction(accountID):
     # accountID = request.json['ID']
 
@@ -91,7 +90,7 @@ def findTransaction(accountID):
     # json_response = json.dumps(json_response)
     return response
 
-@app.route('/api/createtransactions')
+@app.route('/api/createtransactions', methods=["POST"])
 def createTransactions():
     account_id = request.json['ID']
     
@@ -103,7 +102,7 @@ def createTransactions():
     json_response = json.dumps(json_response)
     return json_response
 
-@app.route('/api/spendings')
+@app.route('/api/spendings', methods=["GET"])
 def spendingByCategory():
     accountID = request.json['ID']
     dictionary = {}
@@ -120,7 +119,7 @@ def spendingByCategory():
     json_response = json.dumps(dictionary)
     return json_response
 
-@app.route('/api/spendings/<category>')
+@app.route('/api/spendings/<category>', methods=["GET"])
 def spendingPerMerchantInCategory(category):
     account_id = request.json['ID']
     # category = request.json['category']  # this will need to get input from the front end
@@ -143,7 +142,7 @@ def spendingPerMerchantInCategory(category):
     return json_object
 
 
-@app.route('/api/deals')
+@app.route('/api/deals', methods=["GET"])
 def findFoodDeals():
     return TGTG.TGTG()
 
