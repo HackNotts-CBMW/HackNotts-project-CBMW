@@ -81,9 +81,9 @@ def userData(account_id):
 def findAccount():
     return findTransactionCategory.findTotalCategorySpent()
 
-@app.route('/api/transactions')
-def findTransaction():
-    accountID = request.json['ID']
+@app.route('/api/transactions/<accountID>')
+def findTransaction(accountID):
+    # accountID = request.json['ID']
 
     response = requests.get(f"https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/transactions/accounts/{accountID}/transactions", headers=headers, params=params).text
     # json_response = json.loads(response)
@@ -145,7 +145,7 @@ def spendingPerMerchantInCategory(category):
 
 @app.route('/api/deals')
 def findFoodDeals():
-    TGTG.TGTG()
+    return TGTG.TGTG()
 
 # @app.route('/find')
 # def findFoodDeals():

@@ -3,7 +3,6 @@ import sqlite3 as sql
 def initialize():
 	con = sql.connect("database.db")
 	cur = con.cursor()
-	print(open("schema.sql", "r").read())
 	cur.execute(open("schema.sql", "r").read())
 
 def insertUser(email,password,account_id):

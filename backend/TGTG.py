@@ -1,6 +1,7 @@
 from tgtg import TgtgClient
 from flask import request
 from backend import Constants
+import json
 
 def TGTG(latitude = None, longitude = None):
     food_dict = {}
@@ -29,7 +30,9 @@ def TGTG(latitude = None, longitude = None):
         except (KeyError):
             pass
         food_dict = {}
-    return food_list_dict
+
+    
+    return json.dumps(food_list_dict)
 
 if __name__ == '__main__':
     print(TGTG())
