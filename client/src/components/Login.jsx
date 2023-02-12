@@ -20,8 +20,8 @@ const Login = ({ setUserLoggedIn }) => {
     })
       .then(async (response) => await response.json())
       .then((data) => {
-        console.log(data)
-        localStorage.setItem("userInfo", JSON.stringify(data))
+        console.log(data.Accounts[0])
+        localStorage.setItem("userInfo", JSON.stringify(data.Accounts[0]))
 
         setUserLoggedIn(true)
         navigate("/dashboard")
