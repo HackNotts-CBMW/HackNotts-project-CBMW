@@ -20,6 +20,7 @@ headers = {
     'Content-Type': 'application/json',
     'version': '1.0'
 }
+
 params = {
     'status': 'eq:Successful'
 }
@@ -78,10 +79,6 @@ def userData(account_id):
 
     return json_response
 
-@app.route('/api/find')
-def findAccount():
-    return findTransactionCategory.findTotalCategorySpent()
-
 @app.route('/api/transactions')
 def findTransaction():
     accountID = request.json['ID']
@@ -114,9 +111,9 @@ def spendingByCategory():
 
     for transactions in json_response["Transactions"]:
         if transactions["merchant"]["category"] in dictionary:
-            dictionary[transactions["merchant"]["category"]] += round(transactions["amount"],2)
+            dictionary[transactions["merchant"]["category"]] += round(transactions["amount"], 2)
         else: 
-            dictionary[transactions["merchant"]["category"]] = round(transactions["amount"],2)
+            dictionary[transactions["merchant"]["category"]] = round(transactions["amount"], 2)
 
     json_response = json.dumps(dictionary)
     return json_response
@@ -152,6 +149,21 @@ def findFoodDeals():
 def getPromotion():
     promotions.promotions()
 
+@app.route('/api/credit')
+def DebitOrCredit():
+    spending = request.json['spending']
+    accountID = request.json['ID']
+
+    response = requests.get(
+        f"https://sandbox.capitalone.co.uk/developer-services-platform-pr/api/data/accounts/{accountID}",
+        headers=headers).text
+    json_response = json.loads(response)
+    balance = int(json_response["Accounts"][0]["balance"])
+
+    if balance > spending:
+        return json.dumps({"suggestCredit": True})
+    else:
+        return json.dumps({"suggestCredit": False})
 
 # @app.route('/find')
 # def findFoodDeals():
