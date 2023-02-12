@@ -1,11 +1,34 @@
 import { Formik, Form, Field } from 'formik';
+import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
 
 import homePagePic from "../img/login-pic-2.png"
 
 const SignUp = ({ setUserLoggedIn }) => {
-  const handleFormSubmission = () => {
-    setUserLoggedIn(true)
+  // const handleFormSubmission = () => {
+  //   setUserLoggedIn(true)
+  // }
+
+  const navigate = useNavigate()
+
+  const handleFormSubmission = (event) => {
+    fetch('/api/register', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "email": event.email,
+        "password": event.password
+      })
+    })
+      .then(async (response) => await response.json())
+      .then((data) => {
+        navigate("/login")
+      })
+      .catch((err) => {
+        console.log(err.message);
+      })
   }
 
   return (

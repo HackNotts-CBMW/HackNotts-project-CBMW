@@ -1,13 +1,18 @@
 import { Box, Button, Container, List, ThemeProvider, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useState } from "react";
+import { getLoggedInUser } from "../../helpers";
 import theme from "../../styles/theme";
 import Transaction from "./Transaction";
 
 const AllTransactions = () => {
   const [transactions, setTransactions] = useState([]);
+
+
   useEffect(() => {
-    fetch("/api/transactions/" + "87267767")
+    const uid = getLoggedInUser();
+
+    fetch("/api/transactions/" + uid)
       .then(async (response) => await response.json())
       .then((data) => {
         const allTransactions = data.Transactions;

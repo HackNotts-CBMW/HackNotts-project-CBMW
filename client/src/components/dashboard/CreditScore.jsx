@@ -3,6 +3,7 @@ import { PieChart, Pie, Cell } from 'recharts';
 
 import { Box, Typography, ThemeProvider } from '@mui/material';
 import theme from '../../styles/theme'
+import { checkUserInfo } from '../../helpers';
 
 
 const CreditScore = () => {
@@ -12,7 +13,7 @@ const CreditScore = () => {
   const cy = 200;
   const iR = 50;
   const oR = 100;
-  const value = 400;
+  // const value = 400;
 
   useEffect(() => {
     if (value > 739) {
@@ -33,6 +34,12 @@ const CreditScore = () => {
     { name: 'Very Good', value: 799, color: '#7ed856' },
     { name: 'Excellent', value: 900, color: '#008136' },
   ]
+
+  const [value, setValue] = useState(0)
+
+  useEffect(() => {
+      setValue(checkUserInfo().creditScore)
+  }, [])
 
   const needle = (value, data, cx, cy, iR, oR, color) => {
     let total = 900;
