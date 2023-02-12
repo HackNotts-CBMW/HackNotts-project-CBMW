@@ -54,9 +54,9 @@ function App() {
         userLoggedIn ? (
           <div className="App">
             <div className="dashboard-grid">
-              <Balance />
-              <CreditScore />
-              <GridDoughNotts />
+                <Balance />
+                <CreditScore />
+                <GridDoughNotts />
             </div>
         </div> ) : <Navigate replace to="/login" />
       }/>
